@@ -1,6 +1,6 @@
 package com.brightstraining.springbootblogapplication.service;
 
-import com.brightstraining.springbootblogapplication.model.User;
+import com.brightstraining.springbootblogapplication.model.UserAccount;
 import com.brightstraining.springbootblogapplication.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,27 +15,27 @@ public class UserServiceImpl implements UserService{
     private UserRepository userRepository;
 
     @Override
-    public List<User> getAllUsers() {
+    public List<UserAccount> getAllUsers() {
         return userRepository.findAll();
     }
 
     @Override
-    public void saveUser(User user) {
-        this.userRepository.save(user);
+    public void saveUser(UserAccount userAccount) {
+        this.userRepository.save(userAccount);
     }
 
     @Override
-    public User getUser(long id) {
+    public UserAccount getUser(long id) {
         //creating this in case there is no value for id field
-        Optional<User> optional = this.userRepository.findById(id);
-        User user = null;
+        Optional<UserAccount> optional = this.userRepository.findById(id);
+        UserAccount userAccount = null;
 
         if(optional.isPresent()) {
-            user = optional.get();
+            userAccount = optional.get();
         } else {
             throw new RuntimeException("User with that id " + id + " was not found");
         }
-        return user;
+        return userAccount;
     }
 
     @Override

@@ -11,8 +11,8 @@
             <div class="post-container">
                 <div th:each="post: ${posts}">
                     <h2><a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}">Title of post goes here</a></h2>
-                    <p th:text="'Published ' + ${post.createdAt}"></p>
-                    <p th:text="${post.content}">Post body text goes here</p>
+                    <p th:text="'Published ' + ${post.createdAt}">Creation date goes here</p>
+                    <p th:text="${post.content}">Post content text goes here</p>
                     <hr/>
 
                 </div>
