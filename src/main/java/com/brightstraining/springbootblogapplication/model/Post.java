@@ -22,6 +22,10 @@ public class Post {
 
     private LocalDateTime createdAt;
 
+    @ManyToOne
+    @JoinColumn(name = "userAccount_id", referencedColumnName="id")
+    private UserAccount userAccount;
+
     public Post() {
 
     }

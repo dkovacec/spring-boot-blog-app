@@ -1,7 +1,7 @@
 package com.brightstraining.springbootblogapplication.service;
 
 import com.brightstraining.springbootblogapplication.model.UserAccount;
-import com.brightstraining.springbootblogapplication.repository.UserRepository;
+import com.brightstraining.springbootblogapplication.repository.UserAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,25 +9,25 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserAccountServiceImpl implements UserAccountService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserAccountRepository userAccountRepository;
 
     @Override
     public List<UserAccount> getAllUsers() {
-        return userRepository.findAll();
+        return userAccountRepository.findAll();
     }
 
     @Override
     public void saveUser(UserAccount userAccount) {
-        this.userRepository.save(userAccount);
+        this.userAccountRepository.save(userAccount);
     }
 
     @Override
     public UserAccount getUser(long id) {
         //creating this in case there is no value for id field
-        Optional<UserAccount> optional = this.userRepository.findById(id);
+        Optional<UserAccount> optional = this.userAccountRepository.findById(id);
         UserAccount userAccount = null;
 
         if(optional.isPresent()) {
@@ -41,12 +41,12 @@ public class UserServiceImpl implements UserService{
     @Override
     public void deleteUserById(long id) {
         // add exception here for checking if incorrect id is entered
-        boolean exists = this.userRepository.existsById(id);
+        boolean exists = this.userAccountRepository.existsById(id);
         if (!exists) {
             throw new IllegalStateException("User with that id " + id + " was not found.");
         }
         //delete employee if exists
-        this.userRepository.deleteById(id);
+        this.userAccountRepository.deleteById(id);
 
     }
 }

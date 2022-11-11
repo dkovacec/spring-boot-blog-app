@@ -5,6 +5,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
+
 @Entity
 @Table(name = "users")   //will create table in mysql
 public class UserAccount {
@@ -34,6 +36,9 @@ public class UserAccount {
     private boolean isActive;
     @Column(name="is_admin")
     private boolean isAdmin;
+
+    @OneToMany(mappedBy = "userAccount")   //onetomany as one user can have many posts
+    private List<Post> posts;
 
     public UserAccount() {
 
