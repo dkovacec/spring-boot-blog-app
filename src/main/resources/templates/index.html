@@ -10,6 +10,7 @@
         <div class="container">
             <h1> Tiny Blog Posts</h1>
             <hr/>
+            <p><a th:href="@{/posts/newpost}">Write a new post</a></p>
             <div class="post-container">
                 <div th:each="post: ${posts}">
                     <h2><a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}">Title of post goes here</a></h2>

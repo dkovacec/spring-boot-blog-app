@@ -49,4 +49,8 @@ public class UserAccountServiceImpl implements UserAccountService {
         this.userAccountRepository.deleteById(id);
 
     }
+
+    public Optional<UserAccount> findOneByEmail(String email) {
+        return userAccountRepository.findOneByEmail(email);
+    }
 }

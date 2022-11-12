@@ -23,9 +23,9 @@ public class PostServiceImpl implements PostService{
 
     @Override
     public void savePost(Post post) {
-        if (post.getId() == Long.MIN_VALUE) {      //if post does not exist, have no id value
+//        if (post.getId() == Long.MIN_VALUE) {      //if post does not exist, have no id value
             post.setCreatedAt(LocalDateTime.now());   //give it now time
-        }
+//        }
         this.postRepository.save(post);
     }
 
