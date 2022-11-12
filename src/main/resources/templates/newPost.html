@@ -18,6 +18,11 @@
         </div>
 
       <div>
+        <label for="new-post-summary">Short summary</label>
+        <input id="new-post-summary" type="text" th:field="*{summary}" placeholder="Short summary"/>
+      </div>
+
+      <div>
         <label for="new-post-content">Content</label>
         <input id="new-post-content" type="text" th:field="*{content}" placeholder="Write your post here"/>
       </div>
