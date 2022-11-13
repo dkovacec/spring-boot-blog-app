@@ -1,0 +1,258 @@
+html {
+	overflow-y: scroll;
+	overflow-x:hidden;
+}
+
+body {
+	font-family: Tahoma, Arial;
+	/*overflow: hidden;*/
+	padding: 20px;
+	background: floralwhite;
+
+}
+
+a {
+	text-decoration: none;
+}
+
+.container {
+	position: absolute;
+	width: 95%;
+	padding: 20px;
+	top: 15px;
+	left: 15px;
+	font-family: Tahoma, Arial, sans-serif;
+	background-color: whitesmoke;
+}
+
+.input[type=text] {
+	width: 50%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border: 2px solid red;
+	border-radius: 4px;
+	background-color: floralwhite;
+	color: black;
+}
+
+.input[type=button], input[type=submit], input[type=reset] {
+	background-color: floralwhite;
+	border: 2px solid red;
+	border-radius: 4px;
+	color: white;
+	padding: 16px 32px;
+	text-decoration: none;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+.input[type="checkbox"] {
+	background-color: #000;
+	margin: 2px;
+	font: inherit;
+	color: currentColor;
+	width: 1.5em;
+	height: 1.5em;
+	border: 0.25em solid currentColor;
+	border-radius: 0.15em;
+	transform: translateY(-0.075em);
+}
+
+.button {
+	background-color: blue; /* Green */
+	color: white;
+	padding: 5px 10px;
+	margin: 4px 2px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	border: 1px solid blue;
+	border-radius: 5px;
+}
+
+.ahrefbutton {
+	background-color: lightgray; /* Green */
+	color: blue;
+	padding: 5px 10px;
+	margin: 4px 2px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	border: 1px solid gray;
+	border-radius: 5px;
+}
+
+.textarea {
+	width: 95%;
+	height: 300px;
+	padding: 8px 8px;
+	margin: 5px;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	background-color: white;
+	resize: vertical;
+}
+.textareasummary {
+	width: 95%;
+	height: 200px;
+	margin: 5px;
+	padding: 8px 8px;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	background-color: white;
+	resize: vertical;
+}
+.textareatitle {
+	width: 95%;
+	height: 30px;
+	margin: 5px;
+	padding: 8px 8px;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	background-color: white;
+	resize: none;
+}
+
+.loginform {
+	width: 250px;
+	height: 30px;
+	margin: 5px;
+	padding: 5px 5px;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	background-color: white;
+	resize: none;
+}
+
+/* Header/Blog Title */
+.header {
+	padding: 10px;
+	font-size: 24px;
+	text-align: center;
+	background: white;
+}
+
+.h1 {
+	background-color: white;
+	width: 90%;
+	color: black;
+}
+
+.h2 {
+	background-color: antiquewhite;
+	width: 80%;
+	color: black;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+
+
+.leftcolumn {
+	float: left;
+	width: 75%;
+}
+
+/* Right column */
+.rightcolumn {
+	float: right;
+	width: 25%;
+	padding-left: 50px;
+
+}
+
+/* Footer */
+.footer {
+	padding: 20px;
+	text-align: center;
+	background: #ddd;
+	margin-top: 20px;
+}
+
+/* Add a card effect for articles */
+.post {
+	background-color: white;
+	padding: 20px;
+	margin-top: 20px;
+}
+
+.post-container {
+	background-color: white;
+	padding: 15px;
+	margin-top: 15px;
+}
+
+table, th, td {
+	/*border: 1px solid;*/
+	/*background-color: #f2f2f2;*/
+	/*color: black;*/
+	/*border-color: blue;*/
+	border-collapse: collapse;
+	margin: 5px 0;
+	padding: 5px 5px;
+	font-size: 0.9em;
+	font-family: sans-serif;
+	/*min-width: 150px;*/
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+	background-color: lightskyblue;
+	color: black;
+	text-align: left;
+}
+
+.warning {
+	position: relative;
+	margin: 5px 10px 0 0;
+	max-width: 75%;
+	padding: 4px 4px 4px 4px;
+	text-transform: uppercase;
+	font-weight: normal;
+	font-size: 14px;
+	color: yellow;
+	background-color: red;
+	border-radius: 4px;
+
+}
+
+.red {
+	color: red;
+}
+
+.meta-info-date {
+	font-family: Tahoma, Arial;
+	color: gray;
+	padding: 1px;
+	margin: 1px;
+	float: right;
+	text-align: right;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 11px;
+
+}
+
+.meta-info-author {
+	font-family: Tahoma, Arial;
+	padding: 2px;
+	margin: 2px;
+	color: black;
+	text-align: left;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+
+}
+
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+	.leftcolumn, .rightcolumn {
+		width: 100%;
+		padding: 0;
+	}
+}
