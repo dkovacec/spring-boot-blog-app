@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +12,23 @@
     <body>
         <div class="container">
             <div class="leftcolumn">
-            <p><a th:href="@{/posts/register}" class="ahrefbutton">Register</a> - <a th:href="@{/posts/login}" class="ahrefbutton">Login</a> - <a th:href="@{/posts/newpost}" class="ahrefbutton">Write a new post</a></p>
+                <div sec:authorize="!isAuthenticated()">
+            <a th:href="@{/posts/register}" class="ahrefbutton">Register</a> <a th:href="@{/posts/login}" class="ahrefbutton">Login</a>
+<!--                    <a th:href="@{/posts/newpost}" class="ahrefbutton">Write a new post</a>-->
+                </div>
+<!--                <a th:href="@{/posts/newpost}" class="ahrefbutton">Write a new post</a>-->
+
+                <div sec:authorize="isAuthenticated()">
+                <a th:href="@{/posts/newpost}" class="ahrefbutton">Write a new post</a>
+                    <div class="float: right">
+                    <form th:action="@{/posts/logout}" method="POST">
+                            <label>Hi, <span sec:authentication="name">Username</span></label>
+                        <button type="submit" class="button">Logout</button>
+                    </form>
+                    </div>
+                </div>
+
+
             <div class="header">
                 <h1> Tiny Blog Posts</h1>
             </div>
