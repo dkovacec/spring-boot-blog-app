@@ -19,14 +19,14 @@
             <hr/>
 
             <div class="post-container">
-                <div th:each="post: ${posts}">
+                <div th:each="post: ${posts}" class="post">
                     <h2><a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}">Title of post goes here</a></h2>
                     <p th:text="'Created by ' + ${post.userAccount.firstName}" class="meta-info-author">Creator data goes here</p>
 <!--                    <p th:text="'Published ' + ${post.createdAt}">Creation date goes here</p>-->
                     <p th:text="'Published ' + ${#temporals.format(post.createdAt, 'dd.MM.yyyy HH:mm')}" class="meta-info-date">Creation date goes here</p><br>
                     <p th:text="'Updated ' + ${#temporals.format(post.updatedAt, 'dd.MM.yyyy HH:mm')}" class="meta-info-date">Update date goes here</p><br>
 
-                    <p th:text="${post.summary}" class="post-content">Post content text goes here</p>
+                    <pre th:text="${post.summary}" class="post-content">Post content text goes here</pre>
                     <a th:href="@{'/posts/' + ${post.id}}">Continue reading</a>
 <!--                    <p th:text="${post.content}" class="post-content">Post content text goes here</p>-->
                     <hr/>

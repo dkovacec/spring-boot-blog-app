@@ -7,12 +7,14 @@ body {
 	font-family: Tahoma, Arial;
 	/*overflow: hidden;*/
 	padding: 20px;
-	background: floralwhite;
+	background: #380000;  /*inverted of floralwhite is #00050f*/
+	color: white;
 
 }
 
 a {
 	text-decoration: none;
+	color: #AAF2EF;
 }
 
 .container {
@@ -22,7 +24,8 @@ a {
 	top: 15px;
 	left: 15px;
 	font-family: Tahoma, Arial, sans-serif;
-	background-color: whitesmoke;
+	background-color: #0a0a0a;  /*inverted of whitesmokr*/
+	color: white;
 }
 
 .input[type=text] {
@@ -32,12 +35,12 @@ a {
 	box-sizing: border-box;
 	border: 2px solid red;
 	border-radius: 4px;
-	background-color: floralwhite;
-	color: black;
+	background-color: #00050f;  /*inverted of floralwhite*/
+	color: white;
 }
 
 .input[type=button], input[type=submit], input[type=reset] {
-	background-color: floralwhite;
+	background-color: #00050f; /*inverted of floralwhite*/
 	border: 2px solid red;
 	border-radius: 4px;
 	color: white;
@@ -59,7 +62,7 @@ a {
 }
 
 .button {
-	background-color: blue; /* Green */
+	background-color: #380000; /* Green */
 	color: white;
 	padding: 5px 10px;
 	margin: 4px 2px;
@@ -67,20 +70,20 @@ a {
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
-	border: 1px solid blue;
+	border: 1px solid crimson;
 	border-radius: 5px;
 }
 
 .ahrefbutton {
-	background-color: lightgray; /* Green */
-	color: blue;
+	background-color: #2e3233; /* inverted of lightgray */
+	color: #AAF2EF;
 	padding: 5px 10px;
 	margin: 4px 2px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
-	border: 1px solid gray;
+	border: 1px solid crimson;
 	border-radius: 5px;
 }
 
@@ -90,10 +93,11 @@ a {
 	padding: 8px 8px;
 	margin: 5px;
 	box-sizing: border-box;
-	border: 2px solid #ccc;
+	border: 2px solid #380000;
 	border-radius: 4px;
-	background-color: white;
+	background-color: #0A0A0A;
 	resize: vertical;
+	color: white;
 }
 .textareasummary {
 	width: 95%;
@@ -101,10 +105,11 @@ a {
 	margin: 5px;
 	padding: 8px 8px;
 	box-sizing: border-box;
-	border: 2px solid #ccc;
+	border: 2px solid #380000;
 	border-radius: 4px;
-	background-color: white;
+	background-color: #0A0A0A;
 	resize: vertical;
+	color: white;
 }
 .textareatitle {
 	width: 95%;
@@ -112,10 +117,11 @@ a {
 	margin: 5px;
 	padding: 8px 8px;
 	box-sizing: border-box;
-	border: 2px solid #ccc;
+	border: 2px solid #380000;
 	border-radius: 4px;
-	background-color: white;
+	background-color: #0A0A0A;
 	resize: none;
+	color: white;
 }
 
 .loginform {
@@ -124,10 +130,11 @@ a {
 	margin: 5px;
 	padding: 5px 5px;
 	box-sizing: border-box;
-	border: 2px solid #ccc;
+	border: 2px solid #380000;
 	border-radius: 4px;
-	background-color: white;
+	background-color: black;
 	resize: none;
+	color: white;
 }
 
 /* Header/Blog Title */
@@ -135,19 +142,22 @@ a {
 	padding: 10px;
 	font-size: 24px;
 	text-align: center;
-	background: white;
+	background: black;
+	border: 2px solid #380000;
+	color: #AAF2EF;
+	box-shadow: 5px 5px #380000;
 }
 
 .h1 {
-	background-color: white;
+	background-color: black;
 	width: 90%;
-	color: black;
+	color: #AAF2EF;
 }
 
 .h2 {
-	background-color: antiquewhite;
+	background-color: #051428;  /*inverted of antiquewhite*/
 	width: 80%;
-	color: black;
+	color: antiquewhite;
 }
 
 /* Create two unequal columns that floats next to each other */
@@ -177,15 +187,31 @@ a {
 
 /* Add a card effect for articles */
 .post {
-	background-color: white;
+	background-color: #202020;
+	color: #FBFBFB;
 	padding: 20px;
 	margin-top: 20px;
+	box-shadow: 5px 5px #380000;
 }
 
 .post-container {
-	background-color: white;
+	background-color: black;  /*#2F2F2F*/
+	color: #FBFBFB;
 	padding: 15px;
 	margin-top: 15px;
+}
+
+.post-content {
+	overflow-wrap: break-word;
+	hyphens: manual;
+}
+
+pre {
+	white-space: pre-wrap;       /* Since CSS 2.1 */
+	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+	white-space: -o-pre-wrap;    /* Opera 7 */
+	word-wrap: break-word;       /* Internet Explorer 5.5+ */
+	text-align: justify;
 }
 
 table, th, td {
@@ -200,8 +226,8 @@ table, th, td {
 	font-family: sans-serif;
 	/*min-width: 150px;*/
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-	background-color: lightskyblue;
-	color: black;
+	background-color: #783105;  /*inverted of lightskyblue*/
+	color: white;
 	text-align: left;
 }
 
@@ -225,7 +251,7 @@ table, th, td {
 
 .meta-info-date {
 	font-family: Tahoma, Arial;
-	color: gray;
+	color: lightgray;
 	padding: 1px;
 	margin: 1px;
 	float: right;
@@ -240,7 +266,7 @@ table, th, td {
 	font-family: Tahoma, Arial;
 	padding: 2px;
 	margin: 2px;
-	color: black;
+	color: white;
 	text-align: left;
 	text-decoration: none;
 	display: inline-block;

@@ -11,7 +11,7 @@ public class Post {
 
     @Id  //this will be primary key
     @GeneratedValue(strategy = GenerationType.SEQUENCE)   //will be generated in database automatically
-    private long id;
+    private Long id;
     @NotEmpty(message="Title cannot be empty")
     @NotNull
     private String title;    //title of the post
@@ -31,7 +31,7 @@ public class Post {
 
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

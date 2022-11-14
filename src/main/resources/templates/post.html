@@ -17,7 +17,8 @@
         <p th:text="'Published ' + ${#temporals.format(post.createdAt, 'dd.MM.yyyy HH:mm')}"  class="meta-info-date">Creation date goes here</p><br>
         <p th:text="'Updated ' + ${#temporals.format(post.updatedAt, 'dd.MM.yyyy HH:mm')}"  class="meta-info-date">Update date goes here</p><br>
 
-        <p th:text="${post.content}">Post content text goes here</p>
+<!--        <p th:text="${post.content}">Post content text goes here</p>-->
+        <pre th:text="${post.content}">Post content text goes here</pre>
 
     </div>
 
