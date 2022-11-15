@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>List of users</title>
+      <link th:href="@{/css/style.css}" rel="stylesheet" />
+
+</head>
+<body>
+<div class="container">
+
+    <table th:unless = "${listOfUserAccounts.size() < 1}">
+        <thead>
+        <th>User First Name</th>
+        <th>User Last Name</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>User Role</th>
+        <th>Admin</th>
+
+        </thead>
+        <tbody>
+        <tr th:each="user : ${listOfUserAccounts}">
+            <td th:text="${user.firstName}"></td>
+            <td th:text="${user.lastName}"></td>
+            <td th:text="${user.userName}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.getAuthorities()}">Role</td>
+            <td>Update user</td>
+        </tbody>
+    </table>
+
+  <a th:href="@{/posts}" class="ahrefbutton">Back to homepage</a>
+
+</div>
+
+</body>
+</html>

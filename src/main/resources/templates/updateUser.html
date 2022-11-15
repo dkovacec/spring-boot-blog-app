@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Update User info</title>
+  <link th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+
+  <form action="#" th:action="@{/posts/useraccounts/update}" th:object="${userAccount}" method="post">
+    <input type="text" th:field="*{firstName}" placeholder="First Name">
+    <input type="text" th:field="*{lastName}" placeholder="Last Name">
+    <input type="text" th:field="*{email}" placeholder="Email">
+    <input type="text" th:field="*{userName}" placeholder="Username">
+    <input type="text" th:field="*{authorities}" placeholder="Role">
+
+    <button type="submit">Update User</button>
+  </form>
+
+
+
+<a th:href="@{/posts}" class="ahrefbutton">Back to homepage</a>
+</div>
+</body>
+</html>

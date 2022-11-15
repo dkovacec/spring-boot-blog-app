@@ -21,13 +21,14 @@
                 <div sec:authorize="isAuthenticated()">
                     <span sec:authorize="hasRole('ROLE_ADMIN')">
                         <a th:href="@{/posts/newpost}" class="ahrefbutton">Write a new post</a>
+                         <a th:href="@{/posts/useraccounts}" class="ahrefbutton">User Management</a>
                     </span>
-                    <div class="float: right">
+
                     <form th:action="@{/posts/logout}" method="POST">
                             <label>Hi, <span sec:authentication="name">Username</span></label>
                         <button type="submit" class="button">Logout</button>
                     </form>
-                    </div>
+
                 </div>
 
 
@@ -54,7 +55,8 @@
 
         </div>
 
- </div>
 
-    </body>
+
+ </div>
+</body>
 </html>

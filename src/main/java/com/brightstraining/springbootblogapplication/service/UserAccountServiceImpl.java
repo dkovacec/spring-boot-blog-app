@@ -75,5 +75,17 @@ public class UserAccountServiceImpl implements UserAccountService {
     }
 
 
+//    public void changeUserRoleToAdmin(UserAccount userAccount) {
+//
+//        if (userAccount.getAuthorities().equals("USER_ROLE")) {
+//            Set<Authority> authorities = new HashSet<>();
+//            authorityRepository.findById("ROLE_ADMIN").ifPresent(authorities::add);
+//            userAccount.setAuthorities(authorities);
+//        }
+//
+//        this.userAccountRepository.save(userAccount);
+//    }
+
+
 
 }

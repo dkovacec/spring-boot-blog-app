@@ -74,16 +74,43 @@ public class CommentController {
     }
 
     @GetMapping("/posts/{id}/deleteComment")
-    public String deleteComment (@PathVariable Long id) {
-        Optional<Comment> optionalComment = Optional.ofNullable(commentService.getCommentById(id));
-        if (optionalComment.isPresent()) {
-            Comment comment = optionalComment.get();
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
+    public String deleteComment (@PathVariable Long id, Principal principal) {
+        String authUsername = "anonymousUser";
+        if (principal != null) {
+            authUsername = principal.getName();
+        }
 
+        Optional<Comment> optionalComment = Optional.ofNullable(commentService.getCommentById(id));
+        Optional<UserAccount> optionalUserAccount = this.userAccountService.findOneByEmail(authUsername);
+
+        if (optionalComment.isPresent() && optionalUserAccount.isPresent()) {
+            Comment comment = optionalComment.get();
             commentService.deleteCommentById(id);
             return "redirect:/posts/" + comment.getPost().getId();
         } else {
             return "notfound";
         }
     }
+
+//    @GetMapping("/posts/{id}/deleteComment")
+//    public String deleteComment (@PathVariable Long id, Principal principal ) {
+//        Optional<Comment> optionalComment = Optional.ofNullable(commentService.getCommentById(id));
+//        String authUsername = "anonymousUser";
+//        if ( principal != null ) {
+//            authUsername = principal.getName();;
+//        }
+//        if (optionalComment.isPresent()) {
+//            Comment comment = optionalComment.get();
+//            if(authUsername.equals(comment.getUser().getUserName())) {
+//                commentService.deleteCommentById(id);
+//                return "redirect:/posts/" + comment.getPost().getId();
+//            }
+//            else {
+//                return "notfound";
+//            }
+//        }
+//        return "notfound";
+//    }
 
 }
