@@ -118,7 +118,8 @@ public class PostController {
 
     //retrieve post for deletion
     @GetMapping("/posts/{id}/deletePost")
-    @PreAuthorize("isAuthenticated()")
+    //@PreAuthorize("isAuthenticated()")
+    @Secured({"ROLE_ADMIN"})
     //@PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public String deletePost (@PathVariable Long id) {
         Optional<Post> optionalPost = Optional.ofNullable(postService.getPostById(id));

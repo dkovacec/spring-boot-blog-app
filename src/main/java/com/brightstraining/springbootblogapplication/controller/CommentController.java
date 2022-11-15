@@ -73,4 +73,17 @@ public class CommentController {
 //        }
     }
 
+    @GetMapping("/posts/{id}/deleteComment")
+    public String deleteComment (@PathVariable Long id) {
+        Optional<Comment> optionalComment = Optional.ofNullable(commentService.getCommentById(id));
+        if (optionalComment.isPresent()) {
+            Comment comment = optionalComment.get();
+
+            commentService.deleteCommentById(id);
+            return "redirect:/posts/" + comment.getPost().getId();
+        } else {
+            return "notfound";
+        }
+    }
+
 }

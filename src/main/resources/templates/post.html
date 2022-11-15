@@ -44,11 +44,16 @@
                  </span>
             </div>
 
-            <div class="comments">
+            <div class="posts">
                 <h2>Comments</h2>
                 <div class="comment" th:each="comment : ${post.comments}">
                     <p th:text="'Commented on ' + ${#temporals.format(comment.creationDate, 'yyyy-MM-dd')} + ' by ' + ${comment.user.userName}" class="meta-info-author">Comment date and author</p>
                     <p th:text="${comment.content}">Content of comment</p>
+                    <div sec:authorize="isAuthenticated()">
+                        <span sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
+                        <a th:href="@{'/posts/' + ${comment.id} + '/deleteComment'}" class="ahrefbutton">Delete Comment</a>
+                        </span>
+                    </div>
                 </div>
             </div>
 

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 public class CommentServiceImpl implements CommentService {
@@ -27,5 +28,29 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public void delete(Comment comment) {
         commentRepository.delete(comment);
+    }
+
+    @Override
+    public void deleteCommentById(long id) {
+        boolean exists = this.commentRepository.existsById(id);
+        if (!exists) {
+            throw new IllegalStateException("Comment with id " + id + " was not found.");
+        }
+        this.commentRepository.deleteById(id);
+
+    }
+
+    @Override
+    public Comment getCommentById(Long id) {
+        Optional<Comment> optional = commentRepository.findById(id);
+        Comment comment = null;
+
+        if (optional.isPresent()) {
+            comment = optional.get();
+        }
+//        else {
+//            throw new RuntimeException("Post not found with that id: " + id);
+//        }
+        return comment;
     }
 }
