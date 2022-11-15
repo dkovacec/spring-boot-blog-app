@@ -25,8 +25,8 @@ public class WebSecurityConfig {
             "/posts/login",
             "/css/*",
             "/posts/*",
-            "/posts/useraccounts",
-            "/posts/useraccounts/*"
+            "/posts/showFormForUpdate",
+            "/posts/showFormForUpdate/*"
 
     };
 
