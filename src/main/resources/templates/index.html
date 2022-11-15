@@ -19,7 +19,9 @@
 <!--                <a th:href="@{/posts/newpost}" class="ahrefbutton">Write a new post</a>-->
 
                 <div sec:authorize="isAuthenticated()">
-                <a th:href="@{/posts/newpost}" class="ahrefbutton">Write a new post</a>
+                    <span sec:authorize="hasRole('ROLE_ADMIN')">
+                        <a th:href="@{/posts/newpost}" class="ahrefbutton">Write a new post</a>
+                    </span>
                     <div class="float: right">
                     <form th:action="@{/posts/logout}" method="POST">
                             <label>Hi, <span sec:authentication="name">Username</span></label>

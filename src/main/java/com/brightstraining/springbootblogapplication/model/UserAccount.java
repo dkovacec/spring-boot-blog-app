@@ -31,7 +31,7 @@ public class UserAccount {
     private String email;
     @NotEmpty(message="Password cannot be empty")
     @NotNull
-    @Size(min = 6, max = 10, message = "Password should have between 6 and 10 letters or numbers")
+    //@Size(min = 6, max = 10, message = "Password should have between 6 and 10 letters or numbers")
     private String password;
 
     private String profileInfo;

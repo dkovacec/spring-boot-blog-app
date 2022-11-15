@@ -15,7 +15,9 @@
         </div>
 
         <div sec:authorize="isAuthenticated()">
-            <a th:href="@{/posts/newpost}" class="ahrefbutton">Write a new post</a>
+            <span sec:authorize="hasRole('ROLE_ADMIN')">
+                <a th:href="@{/posts/newpost}" class="ahrefbutton">Write a new post</a>
+            </span>
             <div class="float: right">
                 <form th:action="@{/posts/logout}" method="POST">
                     <label>Hi, <span sec:authentication="name">Username</span></label>
@@ -36,8 +38,10 @@
             <pre th:text="${post.content}">Post content text goes here</pre>
 
             <div sec:authorize="isAuthenticated()">
+                 <span sec:authorize="hasRole('ROLE_ADMIN')">
                 <a th:href="@{'/posts/' + ${post.id} + '/updatePost'}" class="ahrefbutton">Edit</a>
                 <a th:href="@{'/posts/' + ${post.id} + '/deletePost'}" class="ahrefbutton">Delete</a>
+                 </span>
             </div>
 
             <div class="comments">

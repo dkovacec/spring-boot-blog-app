@@ -6,6 +6,7 @@ import com.brightstraining.springbootblogapplication.service.PostService;
 import com.brightstraining.springbootblogapplication.service.UserAccountService;
 import com.brightstraining.springbootblogapplication.service.UserAccountServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -96,7 +97,8 @@ public class PostController {
 
     //updating post
     @PostMapping("/posts/{id}/updatePost")
-    @PreAuthorize("isAuthenticated()")
+    @Secured({"ROLE_ADMIN"})
+    //@PreAuthorize("isAuthenticated()")
     public String updatePost (@PathVariable(value="id") long id, Post post,
                               BindingResult bindingResult, Model model) {
 

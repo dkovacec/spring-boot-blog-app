@@ -34,7 +34,7 @@ public class CommentController {
         this.commentService = commentService ;
     }
 
-    @Secured("ROLE_USER")
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("/posts/{id}/comment")
     public String showComment(@PathVariable(value="id") Long id, Model model, Principal principal ) {
         //get username from Principal
@@ -60,7 +60,8 @@ public class CommentController {
     }
 
     @PostMapping("/posts/{id}/comment")
-    @PreAuthorize("isAuthenticated()")
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
+    //@PreAuthorize("isAuthenticated()")
     public String saveNewComment (@Valid @ModelAttribute Comment comment,
                                   BindingResult bindingResult, Model model, SessionStatus sessionStatus) {
 //        if(bindingResult.hasErrors()) {
