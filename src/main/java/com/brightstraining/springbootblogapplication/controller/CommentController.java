@@ -7,13 +7,16 @@ import com.brightstraining.springbootblogapplication.service.CommentService;
 import com.brightstraining.springbootblogapplication.service.PostService;
 import com.brightstraining.springbootblogapplication.service.UserAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.Optional;
 
 @Controller
@@ -31,11 +34,17 @@ public class CommentController {
         this.commentService = commentService ;
     }
 
+    @Secured("ROLE_USER")
     @GetMapping("/posts/{id}/comment")
-    public String showComment(@PathVariable Long id, Model model ) {
-        String authUserName = "authUserName";
+    public String showComment(@PathVariable(value="id") Long id, Model model, Principal principal ) {
+        //get username from Principal
+        String authUsername = "anonymousUser";
+        if (principal != null) {
+            authUsername = principal.getName();
+        }
 
-        Optional<UserAccount> optionalUserAccount = this.userAccountService.findOneByEmail(authUserName);
+        // get username of current logged in session user
+        Optional<UserAccount> optionalUserAccount = this.userAccountService.findOneByEmail(authUsername);
 
         Optional<Post> postOptional = Optional.ofNullable(this.postService.getPostById(id));
 
@@ -53,13 +62,14 @@ public class CommentController {
     @PostMapping("/posts/{id}/comment")
     @PreAuthorize("isAuthenticated()")
     public String saveNewComment (@Valid @ModelAttribute Comment comment,
-                                  BindingResult bindingResult, Model model) {
-        if(bindingResult.hasErrors()) {
-            return "commentForm";
-        } else {
-            commentService.save(comment);
-            return "redirect:/posts/{id}" + comment.getPost().getId();
-        }
+                                  BindingResult bindingResult, Model model, SessionStatus sessionStatus) {
+//        if(bindingResult.hasErrors()) {
+//            return "commentForm";
+//        } else {
+            this.commentService.save(comment);
+            sessionStatus.setComplete();
+            return "redirect:/posts/" + comment.getPost().getId();
+//        }
     }
 
 }

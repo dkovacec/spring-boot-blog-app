@@ -1,23 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Write new comment</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
   <div class="container">
     <form action="#" th:action="@{'/posts/{id}/comment'}" th:object="${comment}" method="post">
+        <label>Hi, <span sec:authentication="name">Username</span></label>
       <label>
         <div class="warning" th:if="${#fields.hasErrors('content')}" th:errors="*{content}">content Error</div>
-        <textarea th:field="*{content}" placeholder="Write something"></textarea>
+        <textarea th:field="*{content}" placeholder="Write something" rows="5" cols="100" class="textareasummary"></textarea>
       </label>
       <div>
-        <button type="submit" class="button">Send</button>
+          <button type="submit" class="button">Publish comment</button>
       </div>
     </form>
 
+
+      <a th:href="@{/posts}" class="ahrefbutton">Back to homepage</a>
 
   </div>
 </body>

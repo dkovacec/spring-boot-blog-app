@@ -20,7 +20,7 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public Comment save(Comment comment) {
 
-        //comment.setCreationDate(LocalDateTime.now());   //give it update time if exists
+        comment.setCreationDate(LocalDateTime.now());   //give it update time if exists
         return commentRepository.saveAndFlush(comment);
     }
 
