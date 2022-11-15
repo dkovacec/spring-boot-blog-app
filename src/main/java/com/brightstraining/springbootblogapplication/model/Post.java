@@ -4,6 +4,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Table(name = "posts")   //will create table in mysql
@@ -23,9 +25,16 @@ public class Post {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE, fetch= FetchType.EAGER)
+    private Collection<Comment> comments;
+
     @ManyToOne
     @JoinColumn(name = "userAccount_id", referencedColumnName="id")
     private UserAccount userAccount;
+
+    public Post(Set<Comment> comments) {
+        this.comments = comments;
+    }
 
     public Post() {
 
@@ -35,7 +44,7 @@ public class Post {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -85,6 +94,14 @@ public class Post {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public Collection<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Collection<Comment> comments) {
+        this.comments = comments;
     }
 
     @Override
