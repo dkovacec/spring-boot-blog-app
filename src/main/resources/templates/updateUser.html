@@ -11,9 +11,8 @@
 <div class="container">
   <div class="leftcolumn">
 
-<!--    "@{'/posts/' + ${post.id} + '/updatePost'}"-->
 
-  <form action="#" th:action="@{'/posts/showFormForUpdate/' + ${userAccount.id}}" th:object="${userAccount}" method="post">
+  <form action="#" th:action="@{'/posts/updateUser/'}" th:object="${userAccount}" method="post">
 
     <!--  Add hidden fields to handle update-->
     <input type="hidden" th:field="*{id}" th:value="*{id}">
@@ -30,12 +29,15 @@
     <p>UserName</p>
     <input type="text" th:field="*{userName}" placeholder="Username" class="loginform">
     <p class="warning" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></p>
+    <p>Password</p>
+    <input id="password" type="text" th:field="*{password}" placeholder="Password" class="loginform"/>
+    <p class="warning"th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
     <p>Role</p>
     <input type="text" th:field="*{authorities}" placeholder="Role" class="loginform">
 
 
-
-    <button type="submit" class="button">Update User</button>
+<!--    <-input type="submit" class="button" value="Update User"> -->
+    <button type="submit" class="button">Update</button>
   </form>
 
 

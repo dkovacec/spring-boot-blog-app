@@ -3,6 +3,7 @@ package com.brightstraining.springbootblogapplication.controller;
 import com.brightstraining.springbootblogapplication.model.Authority;
 import com.brightstraining.springbootblogapplication.model.UserAccount;
 import com.brightstraining.springbootblogapplication.repository.AuthorityRepository;
+import com.brightstraining.springbootblogapplication.repository.UserAccountRepository;
 import com.brightstraining.springbootblogapplication.service.UserAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,11 +23,16 @@ public class UserAccountController {
 
     private AuthorityRepository authorityRepository;
 
+    private UserAccountRepository userAccountRepository;
+
     @Autowired
     public UserAccountController(UserAccountService userAccountService,
-                                 AuthorityRepository authorityRepository) {
+                                 AuthorityRepository authorityRepository,
+                                 UserAccountRepository userAccountRepository) {
         this.userAccountService = userAccountService;
         this.authorityRepository = authorityRepository;
+        this.userAccountRepository = userAccountRepository;
+
     }
 
     @GetMapping("/posts/useraccounts")
@@ -45,24 +51,39 @@ public class UserAccountController {
     }
 
 
-    @PostMapping("/posts/showFormForUpdate/id")
-
-    public String userAccountUpdate(@Valid @ModelAttribute UserAccount userAccount,
-                                    BindingResult bindingUser) {
-//        if(bindingUser.hasErrors()){
+//    @PostMapping("/posts/showFormForUpdate/id")
+//    public String userAccountUpdate(@Valid @ModelAttribute UserAccount userAccount,
+//                                    BindingResult bindingUser) {
+////        if(bindingUser.hasErrors()){
+////            return "updateUser";
+////        }
+//        try {
+////            if (userAccount.getAuthorities().equals("ROLE_USER")) {
+////                Set<Authority> authorities = new HashSet<>();
+////                authorityRepository.findById("ROLE_ADMIN").ifPresent(authorities::add);
+////                userAccount.setAuthorities(authorities);
+////            }
+//            this.userAccountRepository.save(userAccount);
+////            this.userAccountService.saveUser(userAccount);
+//        } catch (Exception e) {
 //            return "updateUser";
 //        }
-        try {
-//            if (userAccount.getAuthorities().equals("ROLE_USER")) {
-//                Set<Authority> authorities = new HashSet<>();
-//                authorityRepository.findById("ROLE_ADMIN").ifPresent(authorities::add);
-//                userAccount.setAuthorities(authorities);
-//            }
-            userAccountService.saveUser(userAccount);
-        } catch (Exception e) {
-            return "updateUser";
-        }
-        return "redirect:userList";
+//        return "redirect:userList";
+//    }
+
+
+//    @PostMapping("/posts/register")
+    @PostMapping("/posts/updateUser/")
+    public String userAccountUpdate(@Valid @ModelAttribute UserAccount userAccount,
+                                  BindingResult bindingResult, Model model,
+                                    @RequestParam Long id) {
+//        if(bindingResult.hasErrors()) {
+//            return "updateUser";
+//        }
+
+        this.userAccountService.saveUser(userAccount);
+        return "redirect:/posts/";  //return to homepage after registering
     }
+
 
 }

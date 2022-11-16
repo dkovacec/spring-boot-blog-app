@@ -38,8 +38,6 @@ public class UserAccountServiceImpl implements UserAccountService {
                 userAccount.setAuthorities(authorities);
             }
         }
-
-
         userAccount.setPassword(passwordEncoder.encode(userAccount.getPassword()));
         this.userAccountRepository.save(userAccount);
     }
