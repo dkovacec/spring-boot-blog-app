@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>List of users</title>
+    <title>User Management - Metal Blog</title>
       <link th:href="@{/css/style.css}" rel="stylesheet" />
 
 </head>
 <body>
+
 <div class="container">
     <div class="leftcolumn">
+        <h1>User Management - Metal Blog</h1>
+        <a th:href="@{/posts}" class="ahrefbutton">Back to homepage</a>
 
     <table th:unless = "${listOfUserAccounts.size() < 1}">
         <thead>
@@ -29,7 +32,7 @@
             <td th:text="${user.userName}"></td>
             <td th:text="${user.email}"></td>
             <td th:text="${user.getAuthorities()}">Role</td>
-            <td><a th:href="@{showFormForUpdate/{id}(id=${user.id})}">Update user</a></td>
+            <td><a th:href="@{showFormForUpdate/{id}(id=${user.id})}" class="ahrefbutton">Update user</a></td>
         </tbody>
     </table>
 

@@ -82,7 +82,8 @@ public class UserAccountController {
 //        }
 
         this.userAccountService.saveUser(userAccount);
-        return "redirect:/posts/";  //return to homepage after registering
+//        return "redirect:/posts/";  //return to homepage after update
+        return "redirect:/posts/useraccounts";  //return to userlist after registering
     }
 
 

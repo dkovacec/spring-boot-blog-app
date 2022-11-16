@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link th:href="@{/css/style.css}" rel="stylesheet" />
-    <title th:text="${post.title} + ' - Tiny Blog'">Title</title>
+    <title th:text="${post.title} + ' - Metal Blog'">Title</title>
 </head>
 <body>
 <div class="container">
@@ -42,28 +42,30 @@
                 <a th:href="@{'/posts/' + ${post.id} + '/updatePost'}" class="ahrefbutton">Edit</a>
                 <a th:href="@{'/posts/' + ${post.id} + '/deletePost'}" class="ahrefbutton">Delete</a>
                  </span>
-
             </div>
 
-            <div class="posts">
-                <h2>Comments</h2>
+            <div class="align-center">
+                <a th:href="@{'/posts/{id}/comment'(id=${post.id})}">
+                    <button class="button" type="button">Comment Post</button>
+                </a>
+            </div>
+<p class="meta-info-author">Only registered users can comment on posts</p>
+
+            <div class="comments">
+                <h3>Comments</h3>
                 <div class="comment" th:each="comment : ${post.comments}">
-                    <p th:text="'Commented on ' + ${#temporals.format(comment.creationDate, 'yyyy-MM-dd')} + ' by ' + ${comment.user.email}" class="meta-info-author">Comment date and author</p>
+                    <p th:text="'Commented on ' + ${#temporals.format(comment.creationDate, 'yyyy-MM-dd')} + ' by ' + ${comment.user.userName}" class="meta-info-author">Comment date and author</p>
                     <p th:text="${comment.content}">Content of comment</p>
                     <div sec:authorize="isAuthenticated()">
                         <span sec:authorize="hasRole('ROLE_ADMIN')">
-                        <a th:href="@{'/posts/' + ${comment.id} + '/deleteComment'}" class="ahrefbutton">Delete Comment</a>
+                        <a th:href="@{'/posts/' + ${comment.id} + '/deleteComment'}" class="deletebutton">Delete Comment</a>
                         </span>
 
                         <span sec:authorize="hasRole('ROLE_USER')">
-<!--                            <span th:if="${comment.user.email == name}">-->
                                 <span th:if="${comment.user.email == #authentication.name}">
-                        <a th:href="@{'/posts/' + ${comment.id} + '/deleteComment'}" class="ahrefbutton">Delete Comment</a>
+                        <a th:href="@{'/posts/' + ${comment.id} + '/deleteComment'}" class="deletebutton">Delete Comment</a>
                             </span>
                         </span>
-
-
-
                     </div>
                 </div>
             </div>
@@ -74,6 +76,7 @@
                     <button class="button" type="button">Comment Post</button>
                 </a>
             </div>
+
 
         </div>
         <a th:href="@{/posts}" class="ahrefbutton">Back to homepage</a>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Update User info</title>
+    <title>Update User info - Metal Blog</title>
   <link th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
@@ -33,7 +33,13 @@
     <input id="password" type="text" th:field="*{password}" placeholder="Password" class="loginform"/>
     <p class="warning"th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
     <p>Role</p>
-    <input type="text" th:field="*{authorities}" placeholder="Role" class="loginform">
+<!--    <input type="text" th:field="*{authorities}" placeholder="Role" class="loginform">-->
+    <div class="select">
+      <select th:field="*{authorities}" class="select">
+        <option value="ROLE_USER" class="select">ROLE_USER</option>
+        <option value="ROLE_ADMIN" class="select">ROLE_ADMIN</option>
+      </select>
+
 
 
 <!--    <-input type="submit" class="button" value="Update User"> -->
